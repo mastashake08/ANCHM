@@ -22,22 +22,21 @@ angular.module('starter.controllers', [])
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.notifications = Notifications.query(function(){
-    console.log($scope.notifications);
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.notifications = Notifications.query();
   });
+
+  $scope.notifications = Notifications.query();
 
 })
 
 .controller('NotificationDetailCtrl', function($scope, $stateParams, Notifications) {
-  console.log($stateParams.notificationId);
+
   $scope.notification = Notifications.get({ alertId: $stateParams.notificationId}, function() {
-    console.log($scope.notification);
+
   }); // get() returns a single entry
 
-  console.log($scope.notification);
+  
 })
 
 .controller('AccountCtrl', function($scope) {

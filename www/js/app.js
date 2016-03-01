@@ -25,10 +25,10 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     Ionic.io();
 
   var push = new Ionic.Push({});
-  push.unregister();
+
   push.register(function(token) {
     // Log out your device token (Save this!)
-
+  
     $http.post('http://159.203.107.190/register-device',{token:token.token});
 
   });
