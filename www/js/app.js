@@ -5,10 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services','ionic.service.analytics', 'ionic.service.push'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$ionicAnalytics,$ionicPush,$http) {
   $ionicPlatform.ready(function() {
+    $ionicAnalytics.register();
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -20,6 +21,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    //Push Initialization
+    Ionic.io();
+
+  var push = new Ionic.Push({});
+  push.unregister();
+  push.register(function(token) {
+    // Log out your device token (Save this!)
+
+    $http.post('http://159.203.107.190/register-device',{token:token.token});
+
+  });
   });
 })
 
@@ -50,21 +62,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.notifications', {
+      url: '/notifications',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-notifications': {
+          templateUrl: 'templates/tab-notifications.html',
+          controller: 'NotificationsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.notification-detail', {
+      url: '/notifications/:notificationId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-notifications': {
+          templateUrl: 'templates/notification-detail.html',
+          controller: 'NotificationDetailCtrl'
         }
       }
     })

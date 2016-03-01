@@ -1,8 +1,22 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope,$http,$ionicLoading) {
+  $scope.requestForm = {};
+  $scope.sendForm = function(){
+    $ionicLoading.show({
+     template: 'Sending Form...'
+   });
+    $http.post('http://159.203.107.190/request-more-info',$scope.requestForm).success(function(){
+      $ionicLoading.hide();
+      alert('Someone will reach out to you to shortly!');
+    }).error(function(){
+      $ionicLoading.hide();
+      alert('Something went wrong, please try again.');
+    })
+  };
+})
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('NotificationsCtrl', function($scope, Notifications) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -11,14 +25,19 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+  $scope.notifications = Notifications.query(function(){
+    console.log($scope.notifications);
+  });
+
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('NotificationDetailCtrl', function($scope, $stateParams, Notifications) {
+  console.log($stateParams.notificationId);
+  $scope.notification = Notifications.get({ alertId: $stateParams.notificationId}, function() {
+    console.log($scope.notification);
+  }); // get() returns a single entry
+
+  console.log($scope.notification);
 })
 
 .controller('AccountCtrl', function($scope) {

@@ -1,0 +1,11 @@
+<ion-view view-title="Notifications">
+  <ion-content class="scroll-bg">
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="notification in notifications" type="item-text-wrap" href="#/tab/notifications/{{notification.id}}">
+        <h2>{{notification.created_at}}</h2>
+        <p><h3>{{notification.message.substring(0,10)}} ...<h3></p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

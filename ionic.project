@@ -1,4 +1,12 @@
 {
   "name": "ava-mobile",
-  "app_id": "35509efc"
+  "app_id": "35509efc",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }
