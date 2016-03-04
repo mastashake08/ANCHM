@@ -1,25 +1,58 @@
 <ion-view view-title="Dashboard">
+
   <ion-content class="padding text-center scroll-bg text-color">
-    <h2>Request More Info</h2>
+<ion-scroll zooming="true" direction="y">
+  <div class="card">
+    <div class="item item-text-wrap">
+      <img src="/img/logo1.jpg" width="100%" height="50%">
+    </div>
+  </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        The ANCHM mission is to provide grassroots advocacy for accident victims and hospital patients by filling the gaps between illness, injury, loss and recovery; through post-­hospitalization care and guidance. Health studies prove the importance of care management strategies to reduce readmissions which increase positive patient outcomes and keep healthcare costs low. ANCHM works directly with medical institutions to ensure patients have adequate post­-discharge assistance.
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        We help with the following
+        <ul>
+          <li>Appointments:
+Ensure PCP follow-up and/or subsequent appointments.</li>
+<li>Medication:
+Support patient's medication regimen and reconciliation.</li>
+<li>Education:
+Healthcare literacy for more informed decision making.</li>
+<li>Connections:
+Connecting patients to resources for a sustainable recovery.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        If you want to download the enrollment forms, you can do so <a href="http://159.203.107.190/enrollment-forms">here</a>. Alternatively you can request a callback with more information by filling the form below.
     <div class="list">
   <label class="item item-input">
-    <input type="text" placeholder="First Name" ng-model="requestForm.first_name">
+    <input type="text" required placeholder="First Name" ng-model="requestForm.first_name">
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="Last Name" ng-model="requestForm.last_name">
+    <input type="text" required placeholder="Last Name" ng-model="requestForm.last_name">
   </label>
   <label class="item item-input">
-    <input type="tel" placeholder="Phone" ng-model="requestForm.phone">
+    <input type="tel" required placeholder="Phone" ng-model="requestForm.phone">
   </label>
   <label class="item item-input">
-    <input type="email" placeholder="Email" ng-model="requestForm.email">
+    <input type="email" required placeholder="Email" ng-model="requestForm.email">
   </label>
   <label class="item item-input">
     <textarea placeholder="Comments" ng-model="requestForm.comments"></textarea>
   </label>
-  <button class="button button-energized" ng-click="sendForm()">
+  <button class="button button-dark" ng-click="sendForm()">
   Request More Info
 </button>
 </div>
+</div>
+</div>
+  </ion-scroll>
   </ion-content>
+
 </ion-view>

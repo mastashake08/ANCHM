@@ -30,6 +30,7 @@ $font-size: 20px;
 
 $big-bg:'../img/logo1.jpg';
 .scroll-bg {
-  background: url($big-bg) no-repeat center center fixed;
+  //background: url($big-bg) no-repeat center center fixed;
+  background-color: #f05f40;
   background-size: cover;
 }

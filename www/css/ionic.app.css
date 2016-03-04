@@ -9736,5 +9736,5 @@ a.button {
   transition-duration: 0s; }
 
 .scroll-bg {
-  background: url("../img/logo1.jpg") no-repeat center center fixed;
+  background-color: #f05f40;
   background-size: cover; }
